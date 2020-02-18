@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         rollButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                rand = new Random().nextInt(seekBar.getProgress());
+                rand = new Random().nextInt(seekBar.getProgress()) + 1;
                 resultsTextView.setText(Integer.toString(rand));
             }
         });
