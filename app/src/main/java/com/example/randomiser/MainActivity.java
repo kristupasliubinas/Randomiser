@@ -23,16 +23,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //get access to views defined in layout
-        rollButton = (Button) findViewById(R.id.rollButton);
-        resultsTextView = (TextView) findViewById(R.id.resultsTextView);
-        seekBar = (SeekBar) findViewById(R.id.seekBar);
+        rollButton = findViewById(R.id.rollButton);
+        resultsTextView = findViewById(R.id.resultsTextView);
+        seekBar = findViewById(R.id.seekBar);
 
         //specify what happens when the roll button is pressed
         rollButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                rand = new Random().nextInt(seekBar.getProgress()) + 1;
-                resultsTextView.setText(Integer.toString(rand));
+                if(seekBar.getProgress() > 0){
+                    rand = new Random().nextInt(seekBar.getProgress() + 2);
+                    resultsTextView.setText(Integer.toString(rand));
+                } else {
+                    resultsTextView.setText(Integer.toString(new Random().nextInt(2)));
+                }
             }
         });
     }
